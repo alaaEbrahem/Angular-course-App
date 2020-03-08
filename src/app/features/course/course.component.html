@@ -1,0 +1,24 @@
+<p>course Name:{{courseName}}</p>
+<input type="text" [(ngModel)]="courseName">
+<img [src]="'https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823__340.jpg'" alt="course-image">
+<table>
+    <tr>
+        <td [colSpan]="colSpan">alaa</td>
+    </tr>
+</table>
+<ul *ngFor="let group of peopleByCountry">
+    <li>{{group.country}} </li>
+    <ul *ngFor="let poeple of group.names">
+        <li>{{poeple.name}}</li>
+    </ul>
+</ul>
+<input type="text" name="input" InputFormat [format]="upperCase">
+<button [ngStyle]="{'background-color': !isColored?'gray':'yellow'}" (click)="isColored=!isColored">click it</button>
+<button (click)="onAdd()">Add</button>
+<ul *ngIf="courses.length>0 ; else elseBlock" >
+    <li *ngFor="let course of courses;let i=index;trackBy:trackByCourse">
+        {{course.courseName}}
+        <button  (click)="onRemove($event,i)">Remove</button>
+    </li>
+</ul>
+<ng-template #elseBlock>There is No course Yet!</ng-template>
